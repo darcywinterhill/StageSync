@@ -1,0 +1,66 @@
+﻿@model IEnumerable<StageSyncApp.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VenueName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingDate)
+            </th>
+            <th>
+                Artist
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            var loggedInUser = User.Identity.Name;
+            string venueName = "";
+
+            if (loggedInUser == "thelunarlounge@venue.com")
+            {
+                venueName = "The Lunar Lounge";
+            }
+
+        }
+@foreach (var item in Model) {
+            if (item.VenueName == venueName)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VenueName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist.ArtistName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
+                @* <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a> *@
+            </td>
+        </tr>
+}}
+    </tbody>
+</table>
