@@ -23,10 +23,6 @@ html {
   min-height: 100%;
 }
 
-/*body {
-  margin-bottom: 60px;
-}*/
-
 .main-container {
     height: 100vh;
     background-image: url('/images/background.jpg');
@@ -34,20 +30,54 @@ html {
     background-color: black;
 }
 
+header {
+    padding: 10px 25px;
+    margin-bottom: 40px;
+}
+
+.header-logo-container {
+    border-bottom: 1px solid #cee084;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+/*.back-arrow {
+    width: 25px;
+    height: 25px;
+}*/
+
+.header-logo {
+    font-family: 'Gloock', serif;
+    color: #cee084;
+    font-size: 62px;
+    margin: 0;
+}
+
+.back-text {
+    color: #f1f2ed;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0;
+}
+
+a.back-link {
+    text-decoration: none;
+}
+
 /* Landing page */
 
 .landing-container {
     display: grid;
-    grid-template-rows: repeat(3, 1fr); /* 3 rows with equal height */
-    grid-template-columns: 1fr; /* 1 column */
-/*    background-image: url('/images/background.jpg');
-    background-size: cover;*/
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     width: 100%;
     height: 100%;
 }
 
-.grid-item {
-    padding: 10px;
+.item-1 {
+    padding: 10px 0 0 25px;
 }
 
 .item-2 {
@@ -60,20 +90,28 @@ html {
     font-family: 'Gloock', serif;
     color: #cee084;
     font-size: 78px;
+    margin: 0;
 }
 
 .login-button {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    color: #f1f2ed;
     width: 250px;
     height: 60px;
-    border-radius: 25px;
-    border: solid 1px white;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
+    border-radius: 100px;
+    border: solid 1px #f1f2ed;
     text-align: center;
+    padding: 0 5px;
+}
+
+.login-button-text {
+    color: #f1f2ed;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0;
 }
 
 a.login-link {
@@ -85,6 +123,7 @@ a.login-link {
     height: 50px;
     border-radius: 50%;
     background-color: #cee084;
+    margin-left: 35px;
 }
 
 .item-3 {
@@ -93,8 +132,24 @@ a.login-link {
     align-items: flex-end;
 }
 
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: end;
+    padding: 0 25px 10px 25px;
+    width: 100%;
+}
+
+.landing-text-container {
+    width: 70%;
+}
+
 .item-3 p {
     color: #f1f2ed;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 /* Log in page */
@@ -102,10 +157,86 @@ a.login-link {
 .login-container {
     display: flex;
     justify-content: center;
-    
+    padding: 0 25px;
 }
 
 .log-in-title {
     font-family: 'Gloock', serif;
     color: #cee084;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.log-in-form p {
+    color: #f1f2ed;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+}
+
+.remember-me-container {
+    color: #f1f2ed;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.submit-login-container {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-login {
+    text-align: center;
+    width: 250px;
+    height: 60px;
+    border-radius: 100px;
+    border: solid 1px #f1f2ed;
+    text-align: center;
+    padding: 0 5px;
+    background-color: #cee084;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    color: black;
+    text-transform: uppercase;
+}
+
+/* Booking page */
+
+.booking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.booking-title {
+    font-family: 'Gloock', serif;
+    color: #cee084;
+}
+
+@media screen and (min-width: 768px) {
+    .header-logo {
+        font-size: 74px;
+    }
+
+    .logo {
+        font-size: 125px;
+    }
+
+    .item-3 p {
+        font-size: 18px;
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .landing-text-container {
+        width: 40%;
+    }
+
 }

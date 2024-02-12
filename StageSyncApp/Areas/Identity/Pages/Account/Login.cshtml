@@ -7,11 +7,29 @@
 
 @* <h1>@ViewData["Title"]</h1> *@
 @* <div class="row"> *@
+    <header>
+@*         <div>
+            <a class="back-link" asp-page="/Home/Index">
+                <img src="~/images/arrow-left-grey.png" alt="image by icons8 https://icons8.com/icon/357/left" class="back-arrow"/>
+            </a>
+        </div> *@
+        <div class="header-logo-container">
+            <h1 class="header-logo">
+                Stage Sync
+            </h1>
+        </div>
+        <div class="header-links-container">
+            <a class="back-link" asp-page="/Home/Index">
+                <p class="back-text">Back</p>
+            </a>
+        </div>
+    </header>
     <div class="login-container">
         @* <section> *@
-            <form id="account" method="post">
-                <h1 class="log-in-title">Log in</h1>
-                <hr />
+            <form id="account" method="post" class="log-in-form">
+                <h1 class="log-in-title">Log in to Stage Sync</h1>
+                <p>Log in by entering your email address and password</p>
+                <br />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
@@ -23,16 +41,20 @@
                     <label asp-for="Input.Password" class="form-label">Password</label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <div class="checkbox mb-3">
+                <div class="checkbox mb-3 remember-me-container">
                     <label asp-for="Input.RememberMe" class="form-label">
                         <input class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        Remember me
+                        @* @Html.DisplayNameFor(m => m.Input.RememberMe) *@
+                        @* <span><p>Remember me</p></span> *@
                     </label>
                 </div>
-                <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                <div class="submit-login-container">
+                    <button id="login-submit" type="submit" class="submit-login">Log in</button>
                 </div>
-@*                 <div>
+@*
+        class="w-100 btn btn-lg btn-primary
+        <div>
                     <p>
                         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                     </p>
