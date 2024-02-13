@@ -24,10 +24,11 @@ html {
 }
 
 .main-container {
-    height: 100vh;
+    min-height: 100vh;
     background-image: url('/images/background.jpg');
     background-size: cover;
     background-color: black;
+    box-sizing: border-box;
 }
 
 header {
@@ -53,17 +54,50 @@ header {
     margin: 0;
 }
 
-.back-text {
+.header-links-container {
+    display: flex;
+}
+
+.link-text {
     color: #f1f2ed;
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
+    font-size: 12px;
     text-transform: uppercase;
     text-decoration: none;
     margin: 0;
 }
 
-a.back-link {
+.underlined {
+    border-bottom: solid 1px #cee084;
+}
+
+a.header-link {
     text-decoration: none;
+}
+
+.divider {
+    color: #f1f2ed;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.header-link-button {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.info-text {
+    color: #f1f2ed;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 25px;
+    margin-bottom: 20px;
 }
 
 /* Landing page */
@@ -73,7 +107,7 @@ a.back-link {
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: 1fr;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .item-1 {
@@ -206,18 +240,59 @@ footer {
     text-transform: uppercase;
 }
 
-/* Booking page */
+/* Booking page / Overview */
 
-.booking-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.overview-container {
+    padding-bottom: 25px;
+    margin: 0 25px;
 }
 
 .booking-title {
     font-family: 'Gloock', serif;
     color: #cee084;
+    text-align: center;
+    padding: 0 25px;
+    margin-bottom: 20px;
 }
+
+.booking-container {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr;
+    border-radius: 25px;
+}
+
+.booking-grid-heading {
+    font-family: 'Gloock', serif;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    text-decoration: underline #cee084;
+}
+
+.booking-grid-text {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.booking-grid-item {
+    padding: 10px;
+}
+
+.unbooked {
+    background-color: #cee084;
+}
+
+.artist-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+/*.artist-grid-item {
+    padding: 10px;
+}*/
 
 @media screen and (min-width: 768px) {
     .header-logo {

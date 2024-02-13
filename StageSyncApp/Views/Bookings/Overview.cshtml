@@ -1,0 +1,106 @@
+﻿@model IEnumerable<StageSyncApp.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    var loggedInUser = User.Identity.Name;
+    string venueName = "";
+
+    if (loggedInUser == "thelunarlounge@venue.com")
+    {
+        venueName = "The Lunar Lounge";
+    }
+}
+
+<header>
+    <div class="header-logo-container">
+        <h1 class="header-logo">
+            Stage Sync
+        </h1>
+    </div>
+    <div class="header-links-container">
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="nav-link btn btn-link header-link-button"><p class="link-text">Log Out</p></button>
+        </form>
+        <span class="divider">/</span>
+        <a class="header-link" asp-page="/Bookings/Overview">
+            <p class="link-text underlined">Overview</p>
+        </a>
+        <span class="divider">/</span>
+        <a class="header-link" asp-page="/Bookings/Overview">
+            <p class="link-text">Bookings</p>
+        </a>
+        <span class="divider">/</span>
+        <a class="header-link" asp-page="/Bookings/Overview">
+            <p class="link-text">Unbooked</p>
+        </a>
+        @* class="nav-link btn btn-link text-dark" *@
+@*         <a class="back-link"
+            href="@Url.Action("Logout", "Account", new { area = "Identity", returnUrl = Url.Action("Index", "Home", new { area = "" }) })">
+            <p class="back-text">Log out</p>
+        </a> *@
+    </div>
+</header>
+
+<div class="overview-container">
+<h1 class="booking-title">Hi @venueName!</h1>
+<p class="info-text">Here is an overview of your bookings and your unbooked spots</p>
+
+<div class="booking-container">
+    <div class="booking-grid-item">
+        <h2 class="booking-grid-heading">
+            Stage
+        </h2>
+    </div>
+    <div class="booking-grid-item">
+        <h2 class="booking-grid-heading">
+            Date
+        </h2>
+    </div>
+    <div class="booking-grid-item">
+        <h2 class="booking-grid-heading">
+            Artist
+        </h2>
+    </div>
+
+    @{
+        var sortedList = Model.OrderBy(item => item.BookingDate);
+    }
+
+    @foreach (var item in sortedList) {
+            <div class="booking-grid-item @(item.ArtistId == null ? "unbooked" : "")">
+            <p class="booking-grid-text">
+                @Html.DisplayFor(modelItem => item.StageName)
+            </p>
+        </div>
+            <div class="booking-grid-item @(item.ArtistId == null ? "unbooked" : "")">
+            <p class="booking-grid-text">
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </p>
+        </div>
+        
+        @if (item.VenueName == venueName && item.ArtistId == null)
+        {
+        <div class="booking-grid-item artist-grid unbooked">
+            <div class="artist-grid-item">
+            <p class="booking-grid-text">
+                UNBOOKED
+            </p>
+            </div>
+            <div class="artist-grid-item">
+            <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a>
+            </div>
+        </div>
+        }
+        else
+        {
+        <div class="booking-grid-item">
+            <p class="booking-grid-text">@Html.DisplayFor(modelItem => item.Artist.ArtistName)</p>
+        </div>
+        }
+    }
+
+</div>
+</div>
