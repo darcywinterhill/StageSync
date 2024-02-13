@@ -7,6 +7,7 @@ using StageSyncApp.Models;
 
 namespace StageSyncApp.Controllers
 {
+
     [Authorize(Roles = "Organizers")]
     public class BookingsController : Controller
     {
@@ -23,6 +24,16 @@ namespace StageSyncApp.Controllers
             var applicationDbContext = _context.Booking.Include(b => b.Artist);
             return View(await applicationDbContext.ToListAsync());
         }
+
+
+        // GET: Booked
+        public async Task<IActionResult> Booked()
+        {
+            var applicationDbContext = _context.Booking.Include(b => b.Artist)
+                                                        .Where(b => b.ArtistId != null);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
 
         // GET: Bookings/Details/5
         public async Task<IActionResult> Details(int? id)

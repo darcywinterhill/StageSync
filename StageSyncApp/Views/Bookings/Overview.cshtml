@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<StageSyncApp.Models.Booking>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Overview";
 }
 
 @{
@@ -25,11 +25,11 @@
             <button type="submit" class="nav-link btn btn-link header-link-button"><p class="link-text">Log Out</p></button>
         </form>
         <span class="divider">/</span>
-        <a class="header-link" asp-page="/Bookings/Overview">
+        <a class="header-link" asp-controller="Bookings" asp-action="Overview">
             <p class="link-text underlined">Overview</p>
         </a>
         <span class="divider">/</span>
-        <a class="header-link" asp-page="/Bookings/Overview">
+        <a class="header-link" asp-controller="Bookings" asp-action="Booked">
             <p class="link-text">Bookings</p>
         </a>
         <span class="divider">/</span>

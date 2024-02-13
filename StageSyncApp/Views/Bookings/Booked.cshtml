@@ -1,0 +1,115 @@
+﻿@model IEnumerable<StageSyncApp.Models.Booking>
+
+@{
+    ViewData["Title"] = "Booked";
+}
+
+<header>
+    <div class="header-logo-container">
+        <h1 class="header-logo">
+            Stage Sync
+        </h1>
+    </div>
+    <div class="header-links-container">
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="nav-link btn btn-link header-link-button"><p class="link-text">Log Out</p></button>
+        </form>
+        <span class="divider">/</span>
+        <a class="header-link" asp-controller="Bookings" asp-action="Overview">
+            <p class="link-text">Overview</p>
+        </a>
+        <span class="divider">/</span>
+        <a class="header-link" asp-controller="Bookings" asp-action="Booked">
+            <p class="link-text underlined">Bookings</p>
+        </a>
+        <span class="divider">/</span>
+        <a class="header-link" asp-page="/Bookings/Overview">
+            <p class="link-text">Unbooked</p>
+        </a>
+    </div>
+</header>
+
+
+<div class="overview-container">
+    <h1 class="booking-title">Bookings</h1>
+    <p class="info-text">here you find all your bookings</p>
+
+@*     <div class="booking-container">
+        <div class="booking-grid-item">
+            <h2 class="booking-grid-heading">
+                Stage
+            </h2>
+        </div>
+        <div class="booking-grid-item">
+            <h2 class="booking-grid-heading">
+                Date
+            </h2>
+        </div>
+        <div class="booking-grid-item">
+            <h2 class="booking-grid-heading">
+                Artistrtist
+            </h2>
+        </div> *@
+
+        @{
+            var sortedlist = Model.OrderBy(item => item.BookingDate);
+            var juneList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 6);
+            var julyList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 7);
+        }
+
+        <div>JUNE</div>
+        @foreach (var item in juneList)
+        {
+            <div class="booking-grid-item">
+                <p class="booking-grid-text">
+                    @Html.DisplayFor(modelitem => item.StageName)
+                </p>
+            </div>
+            <div class="booking-grid-item">
+                <p class="booking-grid-text">
+                    @Html.DisplayFor(modelitem => item.BookingDate)
+                </p>
+            </div>
+            <div class="booking-grid-item">
+                <p class="booking-grid-text">@Html.DisplayFor(modelitem => item.Artist.ArtistName)</p>
+            </div>
+        }
+
+        <div>JULY</div>
+        @foreach (var item in julyList)
+        {
+            <div class="booking-grid-item">
+                <p class="booking-grid-text">
+                    @Html.DisplayFor(modelitem => item.StageName)
+                </p>
+            </div>
+            <div class="booking-grid-item">
+                <p class="booking-grid-text">
+                    @Html.DisplayFor(modelitem => item.BookingDate)
+                </p>
+            </div>
+            <div class="booking-grid-item">
+                <p class="booking-grid-text">@Html.DisplayFor(modelitem => item.Artist.ArtistName)</p>
+            </div>
+        }
+
+       @*  @foreach (var item in sortedlist)
+        {
+            <div class="booking-grid-item">
+                <p class="booking-grid-text">
+                    @Html.DisplayFor(modelitem => item.StageName)
+                </p>
+            </div>
+            <div class="booking-grid-item">
+                <p class="booking-grid-text">
+                    @Html.DisplayFor(modelitem => item.BookingDate)
+                </p>
+            </div>
+            <div class="booking-grid-item">
+                <p class="booking-grid-text">@Html.DisplayFor(modelitem => item.Artist.ArtistName)</p>
+            </div>
+            }
+        } *@
+
+    @* </div> *@
+</div>
