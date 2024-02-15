@@ -60,17 +60,10 @@
         Here you can alter your booking - add, change or cancel artist
     </p>
     <div class="form-container">
-@* <div class="row">
-    <div class="col-md-4"> *@
         <form asp-action="Edit" class="form-wrapper">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BookingId" />
             <input type="hidden" asp-for="VenueName" value="The Lunar Lounge" />
-@*              <div class="form-group">
-                <label asp-for="VenueName" class="label-text"></label>
-                <input asp-for="VenueName" class="form-control" readonly/>
-                <span asp-validation-for="VenueName" class="text-danger"></span>
-            </div> *@
             <div>
                 <label asp-for="StageName" class="label-text"></label>
                 <input asp-for="StageName" class="form-control" readonly />
@@ -90,12 +83,10 @@
             </div>
             <br />
             <div class="submit-form-container">
-                <input type="submit" value="Save" class="btn btn-primary submit-form" />
+                <input type="submit" value="Save" class="submit-form" />
             </div>
 
         </form>
-@*     </div>
-</div> *@
     </div>
     </div>
 

@@ -153,5 +153,11 @@ namespace StageSyncApp.Controllers
         {
             return _context.Artist.Any(e => e.ArtistId == id);
         }
+
+        // Logout
+        public async Task<IActionResult> Logout()
+        {
+            return View();
+        }
     }
 }

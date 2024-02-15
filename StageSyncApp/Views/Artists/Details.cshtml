@@ -1,6 +1,7 @@
 ﻿@model StageSyncApp.Models.Artist
 
 @{
+    var sortedList = Model.Bookings.OrderBy(item => item.BookingDate);
     var loggedInUser = User.Identity.Name;
     int id = 0;
 
@@ -28,7 +29,7 @@
         </h1>
     </div>
     <div class="header-links-container">
-        <form class="form-inline"
+@*         <form class="form-inline"
               asp-area="Identity"
               asp-page="/Account/Logout"
               asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -38,13 +39,16 @@
                     Log Out
                 </p>
             </button>
-        </form>
+        </form> *@
+        <a class="header-link" asp-controller="Artists" asp-action="Logout">
+            <p class="link-text">
+                Log Out
+            </p>
+        </a>
         <span class="divider">
             /
         </span>
-        <a class="header-link"
-           asp-controller="Artists"
-           asp-action="Index">
+        <a class="header-link" asp-controller="Artists" asp-action="Index">
             <p class="link-text">
                 Start
             </p>
@@ -52,8 +56,7 @@
         <span class="divider">
             /
         </span>
-        <a class="header-link"
-           href="@Url.Action("Details", "Artists", new { id = id })">
+        <a class="header-link" href="@Url.Action("Details", "Artists", new { id = id })">
             <p class="link-text underlined">
                 Bookings
             </p>
@@ -84,10 +87,6 @@
             Date
         </h2>
     </div>
-
-    @{
-        var sortedList = Model.Bookings.OrderBy(item => item.BookingDate);
-    }
 
     @foreach (var item in sortedList)
     {

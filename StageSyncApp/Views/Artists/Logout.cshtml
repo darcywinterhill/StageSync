@@ -1,23 +1,17 @@
-﻿@model IEnumerable<StageSyncApp.Models.Artist>
-
-@{
+﻿@{
     var loggedInUser = User.Identity.Name;
     int id = 0;
-    string artistName = "";
 
     switch (loggedInUser)
     {
         case "sonicvoyager@artist.com":
             id = 1;
-            artistName = "Sonic Voyager";
             break;
         case "silverserpent@artist.com":
             id = 2;
-            artistName = "Silver Serpent";
             break;
         case "galacticgroovesyndicate@artist.com":
             id = 3;
-            artistName = "Galactic Groove Syndicate";
             break;
         default:
             id = -1;
@@ -43,16 +37,20 @@
                 </p>
             </button>
         </form> *@
-        <a class="header-link" asp-controller="Artists" asp-action="Logout">
-            <p class="link-text">
+        <a class="header-link"
+           asp-controller="Artists"
+           asp-action="Logout">
+            <p class="link-text underlined">
                 Log Out
             </p>
         </a>
         <span class="divider">
             /
         </span>
-        <a class="header-link" asp-controller="Artists" asp-action="Index">
-            <p class="link-text underlined">
+        <a class="header-link"
+           asp-controller="Artists"
+           asp-action="Index">
+            <p class="link-text">
                 Start
             </p>
         </a>
@@ -67,12 +65,19 @@
     </div>
 </header>
 
-
 <div class="overview-container">
     <h1 class="booking-title">
-        Hi @artistName!
+        Log out
     </h1>
-     <p class="info-text">
-        Here is an overview of your booked gigs
+    <p class="info-text">
+        You're about to log out from Stage Sync - are you sure about this?
     </p>
- </div>
+    <br />
+    <div class="submit-form-container">
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="submit-form">
+                Log Out
+            </button>
+        </form>
+    </div>
+</div>

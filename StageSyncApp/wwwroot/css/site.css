@@ -100,6 +100,16 @@ a.header-link {
     margin-bottom: 20px;
 }
 
+.alter-link {
+    text-decoration: underline solid black;
+}
+
+.alter-link:hover {
+    color: #f1f2ed;
+    background-color: black;
+    text-decoration: none;
+}
+
 /* Landing page */
 
 .landing-container {

@@ -92,7 +92,7 @@
                 </p>
                 @if (item.BookingId <= 5 )
                 {
-                    <a asp-action="Edit" asp-route-id="@item.BookingId">
+                    <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link">
                         Cancel
                     </a>
                 }
@@ -140,7 +140,7 @@
                 </p>
                 @if (item.BookingId <= 5)
                 {
-                    <a asp-action="Edit" asp-route-id="@item.BookingId">
+                    <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link">
                         Cancel
                     </a>
                 }
