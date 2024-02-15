@@ -1,51 +1,104 @@
 ﻿@model StageSyncApp.Models.Booking
 
-@{
-    ViewData["Title"] = "Edit";
-}
+<header>
+    <div class="header-logo-container">
+        <h1 class="header-logo">
+            Stage Sync
+        </h1>
+    </div>
+    <div class="header-links-container">
+        <form class="form-inline"
+              asp-area="Identity"
+              asp-page="/Account/Logout"
+              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit"
+                    class="nav-link btn btn-link header-link-button">
+                <p class="link-text">
+                    Log Out
+                </p>
+            </button>
+        </form>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link"
+           asp-controller="Bookings"
+           asp-action="Index">
+            <p class="link-text">
+                Overview
+            </p>
+        </a>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link"
+           asp-controller="Bookings"
+           asp-action="Booked">
+            <p class="link-text">
+                Bookings
+            </p>
+        </a>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link"
+           asp-controller="Bookings"
+           asp-action="Unbooked">
+            <p class="link-text">
+                Unbooked
+            </p>
+        </a>
+    </div>
+</header>
 
-<h1>Edit</h1>
 
-<h4>Booking</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+<div class="overview-container">
+    <h1 class="booking-title">
+        Alter booking
+    </h1>
+    <p class="info-text">
+        Here you can alter your booking - add, change or cancel artist
+    </p>
+    <div class="form-container">
+@* <div class="row">
+    <div class="col-md-4"> *@
+        <form asp-action="Edit" class="form-wrapper">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BookingId" />
-            <div class="form-group">
-                <label asp-for="VenueName" class="control-label"></label>
-                <input asp-for="VenueName" class="form-control" />
+            <input type="hidden" asp-for="VenueName" value="The Lunar Lounge" />
+@*              <div class="form-group">
+                <label asp-for="VenueName" class="label-text"></label>
+                <input asp-for="VenueName" class="form-control" readonly/>
                 <span asp-validation-for="VenueName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StageName" class="control-label"></label>
-                <input asp-for="StageName" class="form-control" />
+            </div> *@
+            <div>
+                <label asp-for="StageName" class="label-text"></label>
+                <input asp-for="StageName" class="form-control" readonly />
                 <span asp-validation-for="StageName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="BookingDate" class="control-label"></label>
-                <input asp-for="BookingDate" class="form-control" type="date" />
+            <div>
+                <label asp-for="BookingDate" class="label-text"></label>
+                <input asp-for="BookingDate" class="form-control" type="date" readonly/>
                 <span asp-validation-for="BookingDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ArtistId" class="control-label">Artist</label>
+            <div>
+                <label asp-for="ArtistId" class="label-text">Artist</label>
                 <select asp-for="ArtistId" class="form-control" asp-items="ViewBag.ArtistName">
                     <option value=""></option>
                 </select>
                 <span asp-validation-for="ArtistId" class="text-danger"></span>
             </div>
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <br />
+            <div class="submit-form-container">
+                <input type="submit" value="Save" class="btn btn-primary submit-form" />
             </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to overview</a>
-</div>
+        </form>
+@*     </div>
+</div> *@
+    </div>
+    </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -219,12 +219,12 @@ footer {
     margin: 0;
 }
 
-.submit-login-container {
+.submit-form-container {
     display: flex;
     justify-content: center;
 }
 
-.submit-login {
+.submit-form {
     text-align: center;
     width: 250px;
     height: 60px;
@@ -240,7 +240,7 @@ footer {
     text-transform: uppercase;
 }
 
-/* Booking page / Overview */
+/* Booking page */
 
 .overview-container {
     padding-bottom: 25px;
@@ -258,7 +258,7 @@ footer {
 .booking-container {
     background-color: white;
     display: grid;
-    grid-template-columns: 2fr 2fr 3fr;
+    grid-template-columns: 1fr 2fr 1fr;
 }
 
 .booking-grid-heading {
@@ -284,11 +284,11 @@ footer {
 .unbooked {
     background-color: #cee084;
 }
-
+/*
 .artist-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-}
+}*/
 
 /*.artist-grid-item {
     padding: 10px;
@@ -342,6 +342,30 @@ footer {
 
 .booked-grid-item {
     margin-bottom: 10px;
+}
+
+/* Edit */
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+.form-wrapper {
+    width: 100%;
+}
+
+.label-text {
+    color: #f1f2ed;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Logout */
+
+.logout-button:hover, ::selection {
+    outline: none;
 }
 
 @media screen and (min-width: 768px) {

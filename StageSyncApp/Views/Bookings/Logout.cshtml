@@ -1,0 +1,54 @@
+﻿<header>
+    <div class="header-logo-container">
+        <h1 class="header-logo">
+            Stage Sync
+        </h1>
+    </div>
+    <div class="header-links-container">
+        <a class="header-link" asp-controller="Bookings" asp-action="Logout">
+            <p class="link-text underlined">
+                Log out
+            </p>
+        </a>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link" asp-controller="Bookings" asp-action="Index">
+            <p class="link-text">
+                Overview
+            </p>
+        </a>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link" asp-controller="Bookings" asp-action="Booked">
+            <p class="link-text">
+                Bookings
+            </p>
+        </a>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link" asp-controller="Bookings" asp-action="Unbooked">
+            <p class="link-text">
+                Unbooked
+            </p>
+        </a>
+    </div>
+</header>
+
+<div class="overview-container">
+    <h1 class="booking-title">
+        Log out
+    </h1>
+    <p class="info-text">
+        You're about to log out from Stage Sync - are you sure about this?
+    </p>
+    <div class="submit-form-container">
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="submit-form">
+                Log Out
+            </button>
+        </form>
+    </div>
+</div>

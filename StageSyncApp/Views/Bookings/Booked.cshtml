@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<StageSyncApp.Models.Booking>
 
 @{
-    ViewData["Title"] = "Booked";
+    var juneList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 6);
+    var julyList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 7);
 }
 
 <header>
@@ -11,29 +12,15 @@
         </h1>
     </div>
     <div class="header-links-container">
-        <form 
-            class="form-inline"
-            asp-area="Identity" 
-            asp-page="/Account/Logout" 
-            asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
-        >
-            <button 
-                type="submit" 
-                class="nav-link btn btn-link header-link-button"
-            >
-                <p class="link-text">
-                    Log Out
-                </p>
-            </button>
-        </form>
+        <a class="header-link" asp-controller="Bookings" asp-action="Logout">
+            <p class="link-text">
+                Log out
+            </p>
+        </a>
         <span class="divider">
             /
         </span>
-        <a 
-            class="header-link" 
-            asp-controller="Bookings" 
-            asp-action="Index"
-        >
+        <a class="header-link" asp-controller="Bookings" asp-action="Index">
             <p class="link-text">
                 Overview
             </p>
@@ -41,24 +28,15 @@
         <span class="divider">
             /
         </span>
-        <a 
-            class="header-link" 
-            asp-controller="Bookings" 
-            asp-action="Booked"
-        >
+        <a class="header-link" asp-controller="Bookings" asp-action="Booked">
             <p class="link-text underlined">
                 Bookings
             </p>
         </a>
-        <span 
-            class="divider">
+        <span class="divider">
             /
         </span>
-        <a 
-            class="header-link" 
-            asp-controller="Bookings" 
-            asp-action="Unbooked"
-        >
+        <a class="header-link" asp-controller="Bookings" asp-action="Unbooked">
             <p class="link-text">
                 Unbooked
             </p>
@@ -73,11 +51,6 @@
     <p class="info-text">
         Here you find all your bookings
     </p>
-
-@{
-    var juneList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 6);
-    var julyList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 7);
-}
 
     <div class="booked-container">
     <div class="booked-grid-item month-container">
@@ -117,13 +90,12 @@
                 <p class="booking-grid-text">
                     @Html.DisplayFor(modelitem => item.Artist.ArtistName)
                 </p>
-                        @if (item.BookingId <= 5 )
-                        {
-                            <a asp-action="Edit"
-                               asp-route-id="@item.BookingId">
-                                Edit
-                            </a>
-                        }
+                @if (item.BookingId <= 5 )
+                {
+                    <a asp-action="Edit" asp-route-id="@item.BookingId">
+                        Cancel
+                    </a>
+                }
             </div>
         </div>
     }
@@ -166,8 +138,15 @@
                 <p class="booking-grid-text">
                     @Html.DisplayFor(modelitem => item.Artist.ArtistName)
                 </p>
+                @if (item.BookingId <= 5)
+                {
+                    <a asp-action="Edit" asp-route-id="@item.BookingId">
+                        Cancel
+                    </a>
+                }
             </div>
         </div>
-    }
+        }
+        </div>
     </div>
 </div>

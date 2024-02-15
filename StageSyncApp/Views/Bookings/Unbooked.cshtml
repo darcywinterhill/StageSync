@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<StageSyncApp.Models.Booking>
 
-@{
-    ViewData["Title"] = "Unbooked";
-}
-
 <header>
     <div class="header-logo-container">
         <h1 class="header-logo">
@@ -11,29 +7,15 @@
         </h1>
     </div>
     <div class="header-links-container">
-        <form 
-            class="form-inline" 
-            asp-area="Identity" 
-            asp-page="/Account/Logout" 
-            asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
-        >
-            <button 
-                type="submit" 
-                class="nav-link btn btn-link header-link-button"
-            >
-                <p class="link-text">
-                    Log Out
-                </p>
-            </button>
-        </form>
+        <a class="header-link" asp-controller="Bookings" asp-action="Logout">
+            <p class="link-text">
+                Log out
+            </p>
+        </a>
         <span class="divider">
             /
         </span>
-        <a 
-            class="header-link" 
-            asp-controller="Bookings" 
-            asp-action="Index"
-        >
+        <a class="header-link" asp-controller="Bookings" asp-action="Index">
             <p class="link-text">
                 Overview
             </p>
@@ -41,11 +23,7 @@
         <span class="divider">
             /
         </span>
-        <a 
-            class="header-link" 
-            asp-controller="Bookings" 
-            asp-action="Booked"
-        >
+        <a class="header-link" asp-controller="Bookings" asp-action="Booked">
             <p class="link-text">
                 Bookings
             </p>
@@ -53,11 +31,7 @@
         <span class="divider">
             /
         </span>
-        <a 
-            class="header-link" 
-            asp-controller="Bookings" 
-            asp-action="Unbooked"
-        >
+        <a class="header-link" asp-controller="Bookings" asp-action="Unbooked">
             <p class="link-text underlined">
                 Unbooked
             </p>
@@ -119,11 +93,8 @@
                             </h3>
                         </div>
                         <div class="item-wrapper">
-                            <a 
-                                asp-action="Edit" 
-                                asp-route-id="@item.BookingId"
-                            >
-                                Add artist
+                            <a asp-action="Edit" asp-route-id="@item.BookingId">
+                                Book Artist
                             </a>
                         </div>
                     </div>
@@ -131,7 +102,7 @@
             </div>
         } else
         {
-            // Need to fix edit so that I can test the else
+
         }
 
         @if (hasJulyElements)
@@ -170,11 +141,8 @@
                             </h3>
                         </div>
                         <div class="item-wrapper">
-                            <a 
-                                asp-action="Edit" 
-                                asp-route-id="@item.BookingId"
-                            >
-                                Add artist
+                            <a asp-action="Edit" asp-route-id="@item.BookingId">
+                                Book Artist
                             </a>
                         </div>
                     </div>
@@ -182,7 +150,7 @@
             </div>
         } else
         {
-            //some code here
+            
         }
 
     </div>

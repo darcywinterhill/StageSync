@@ -179,5 +179,11 @@ namespace StageSyncApp.Controllers
         {
             return _context.Booking.Any(e => e.BookingId == id);
         }
+
+        // Logout
+        public async Task<IActionResult> Logout()
+        {
+            return View();
+        }
     }
 }

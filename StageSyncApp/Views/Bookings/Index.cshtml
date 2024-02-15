@@ -1,10 +1,6 @@
 ﻿@model IEnumerable<StageSyncApp.Models.Booking>
 
 @{
-    ViewData["Title"] = "Overview";
-}
-
-@{
     var loggedInUser = User.Identity.Name;
     string venueName = "";
 
@@ -12,6 +8,8 @@
     {
         venueName = "The Lunar Lounge";
     }
+
+    var sortedList = Model.OrderBy(item => item.BookingDate);
 }
 
 <header>
@@ -21,29 +19,15 @@
         </h1>
     </div>
     <div class="header-links-container">
-        <form 
-            class="form-inline" 
-            asp-area="Identity" 
-            asp-page="/Account/Logout" 
-            asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
-        >
-            <button 
-                type="submit" 
-                class="nav-link btn btn-link header-link-button"
-            >
-                <p class="link-text">
-                    Log Out
-                </p>
-            </button>
-        </form>
+        <a class="header-link" asp-controller="Bookings" asp-action="Logout">
+            <p class="link-text">
+                Log out
+            </p>
+        </a>
         <span class="divider">
             /
         </span>
-        <a 
-            class="header-link" 
-            asp-controller="Bookings" 
-            asp-action="Index"
-        >
+        <a class="header-link" asp-controller="Bookings" asp-action="Index">
             <p class="link-text underlined">
                 Overview
             </p>
@@ -51,11 +35,7 @@
         <span class="divider">
             /
         </span>
-        <a 
-            class="header-link" 
-            asp-controller="Bookings" 
-            asp-action="Booked"
-        >
+        <a class="header-link" asp-controller="Bookings" asp-action="Booked">
             <p class="link-text">
                 Bookings
             </p>
@@ -63,11 +43,7 @@
         <span class="divider">
             /
         </span>
-        <a 
-            class="header-link" 
-            asp-controller="Bookings" 
-            asp-action="Unbooked"
-        >
+        <a class="header-link" asp-controller="Bookings" asp-action="Unbooked">
             <p class="link-text">
                 Unbooked
             </p>
@@ -91,18 +67,14 @@
         </div>
         <div class="booking-grid-item">
             <h2 class="booking-grid-heading">
-                Date
+                Artist
             </h2>
         </div>
         <div class="booking-grid-item">
             <h2 class="booking-grid-heading">
-                Artist
+                Date
             </h2>
         </div>
-
-        @{
-            var sortedList = Model.OrderBy(item => item.BookingDate);
-        }
 
         @foreach (var item in sortedList) {
             <div class="booking-grid-item @(item.ArtistId == null ? "unbooked" : "")">
@@ -110,25 +82,13 @@
                     @Html.DisplayFor(modelItem => item.StageName)
                 </p>
             </div>
-            <div class="booking-grid-item @(item.ArtistId == null ? "unbooked" : "")">
-                <p class="booking-grid-text">
-                    @Html.DisplayFor(modelItem => item.BookingDate)
-                </p>
-            </div>
 
             @if (item.VenueName == venueName && item.ArtistId == null)
             {
-                <div class="booking-grid-item artist-grid unbooked">
-                    <div class="artist-grid-item">
-                        <p class="booking-grid-text">
-                            UNBOOKED
-                        </p>
-                    </div>
-                    <div class="artist-grid-item">
-                        <a asp-action="Edit" asp-route-id="@item.BookingId">
-                            Edit
-                        </a>
-                    </div>
+                <div class="booking-grid-item unbooked">
+                    <a asp-action="Edit" asp-route-id="@item.BookingId">
+                        Book Artist
+                    </a>
                 </div>
             }
             else
@@ -139,6 +99,12 @@
                     </p>
                 </div>
             }
+
+            <div class="booking-grid-item @(item.ArtistId == null ? "unbooked" : "")">
+                <p class="booking-grid-text">
+                    @Html.DisplayFor(modelItem => item.BookingDate)
+                </p>
+            </div>
         }
     </div>
 </div>
