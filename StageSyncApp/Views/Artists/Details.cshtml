@@ -1,62 +1,111 @@
 ﻿@model StageSyncApp.Models.Artist
 
 @{
-    ViewData["Title"] = "Details";
+    var loggedInUser = User.Identity.Name;
+    int id = 0;
+
+    switch (loggedInUser)
+    {
+        case "sonicvoyager@artist.com":
+            id = 1;
+            break;
+        case "silverserpent@artist.com":
+            id = 2;
+            break;
+        case "galacticgroovesyndicate@artist.com":
+            id = 3;
+            break;
+        default:
+            id = -1;
+            break;
+    }
 }
 
-<h1>Details</h1>
+<header>
+    <div class="header-logo-container">
+        <h1 class="header-logo">
+            Stage Sync
+        </h1>
+    </div>
+    <div class="header-links-container">
+        <form class="form-inline"
+              asp-area="Identity"
+              asp-page="/Account/Logout"
+              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit"
+                    class="nav-link btn btn-link header-link-button">
+                <p class="link-text">
+                    Log Out
+                </p>
+            </button>
+        </form>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link"
+           asp-controller="Artists"
+           asp-action="Index">
+            <p class="link-text">
+                Start
+            </p>
+        </a>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link"
+           href="@Url.Action("Details", "Artists", new { id = id })">
+            <p class="link-text underlined">
+                Bookings
+            </p>
+        </a>
+    </div>
+</header>
 
-<div>
-    <h4>Artist</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ArtistName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ArtistName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bookings)
-        </dt>
-        <dd class="col-sm-10">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>
-                            Venue
-                        </td>
-                        <td>
-                            Stage
-                        </td>
-                        <td>
-                            Booking Date
-                        </td>
-                    </tr>
-                </thead>
-                <tbody>
+<div class="overview-container">
+    <h1 class="booking-title">
+        Bookings
+    </h1>
+    <p class="info-text">
+        Here is an overview of your booked gigs
+    </p>
+<div class="booking-container">
+    <div class="booking-grid-item">
+        <h2 class="booking-grid-heading">
+            Venue
+        </h2>
+    </div>
+    <div class="booking-grid-item">
+        <h2 class="booking-grid-heading">
+            Stage
+        </h2>
+    </div>
+    <div class="booking-grid-item">
+        <h2 class="booking-grid-heading">
+            Date
+        </h2>
+    </div>
 
-                    @foreach (var booking in Model.Bookings)
-                    {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => booking.VenueName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => booking.StageName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => booking.BookingDate)
-                                </td>
-                            </tr>
-                        
-                    }
-                </tbody>
-            </table>
-        </dd>
-    </dl>
+    @{
+        var sortedList = Model.Bookings.OrderBy(item => item.BookingDate);
+    }
+
+    @foreach (var item in sortedList)
+    {
+        <div class="booking-grid-item">
+            <p class="booking-grid-text">
+                @Html.DisplayFor(modelItem => item.VenueName)
+            </p>
+        </div>
+        <div class="booking-grid-item">
+            <p class="booking-grid-text">
+                @Html.DisplayFor(modelItem => item.StageName)
+            </p>
+        </div>
+        <div class="booking-grid-item">
+            <p class="booking-grid-text">
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </p>
+        </div>
+    }
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ArtistId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>

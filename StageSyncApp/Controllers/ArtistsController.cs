@@ -18,7 +18,9 @@ namespace StageSyncApp.Controllers
 
         // GET: Artists
         public async Task<IActionResult> Index()
+
         {
+            var applicationDbContext = _context.Artist.Include(b => b.Bookings);
             return View(await _context.Artist.ToListAsync());
         }
 

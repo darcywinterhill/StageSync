@@ -19,7 +19,7 @@ namespace StageSyncApp.Controllers
         }
 
         // GET: Bookings
-        public async Task<IActionResult> Overview()
+        public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Booking.Include(b => b.Artist);
             return View(await applicationDbContext.ToListAsync());
@@ -31,6 +31,14 @@ namespace StageSyncApp.Controllers
         {
             var applicationDbContext = _context.Booking.Include(b => b.Artist)
                                                         .Where(b => b.ArtistId != null);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Unbooked
+        public async Task<IActionResult> Unbooked()
+        {
+            var applicationDbContext = _context.Booking.Include(b => b.Artist)
+                                                        .Where(b => b.ArtistId == null);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -74,6 +82,8 @@ namespace StageSyncApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            //ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId", booking.ArtistId);
+            //return View(booking);
             ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId", booking.ArtistId);
             return View(booking);
         }
@@ -107,8 +117,8 @@ namespace StageSyncApp.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(booking);
@@ -125,10 +135,10 @@ namespace StageSyncApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ArtistId"] = new SelectList(_context.Artist, "ArtistId", "ArtistId", booking.ArtistId);
-            return View(booking);
+            //    return RedirectToAction(nameof(Index));
+            //}
+            ViewData["ArtistName"] = new SelectList(_context.Artist, "ArtistId", "ArtistName", booking.ArtistId);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Bookings/Delete/5

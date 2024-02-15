@@ -2,45 +2,118 @@
 
 @{
     ViewData["Title"] = "Index";
+
+var loggedInUser = User.Identity.Name;
+int id = 0;
+string artistName = "";
+
+switch (loggedInUser)
+{
+    case "sonicvoyager@artist.com":
+        id = 1;
+        artistName = "Sonic Voyager";
+        break;
+    case "silverserpent@artist.com":
+        id = 2;
+        artistName = "Silver Serpent";
+        break;
+    case "galacticgroovesyndicate@artist.com":
+        id = 3;
+        artistName = "Galactic Groove Syndicate";
+        break;
+    default:
+        id = -1;
+        break;
+}
 }
 
-<h1>Index</h1>
 
-@* <p>
-    <a asp-action="Create">Create New</a>
-</p> *@
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ArtistName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<header>
+    <div class="header-logo-container">
+        <h1 class="header-logo">
+            Stage Sync
+        </h1>
+    </div>
+    <div class="header-links-container">
+        <form class="form-inline"
+              asp-area="Identity"
+              asp-page="/Account/Logout"
+              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit"
+                    class="nav-link btn btn-link header-link-button">
+                <p class="link-text">
+                    Log Out
+                </p>
+            </button>
+        </form>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link"
+           asp-controller="Artists"
+           asp-action="Index">
+            <p class="link-text underlined">
+                Start
+            </p>
+        </a>
+        <span class="divider">
+            /
+        </span>
+        <a class="header-link"
+           href="@Url.Action("Details", "Artists", new { id = id })">
+            <p class="link-text">
+                Bookings
+            </p>
+        </a>
+    </div>
+</header>
 
-        @{
-            var loggedInUser = User.Identity.Name;
-            int id = 0;
 
-            switch (loggedInUser)
-            {
-                case "sonicvoyager@artist.com":
-                    id = 1;
-                    break;
-                case "silverserpent@artist.com":
-                    id = 2;
-                    break;
-                case "galacticgroovesyndicate@artist.com":
-                    id = 3;
-                    break;
-                default:
-                    id = -1;
-                    break;
-            }
-        }
-@foreach (var item in Model) {
+<div class="overview-container">
+    <h1 class="booking-title">
+        Hi @artistName!
+    </h1>
+     <p class="info-text">
+        Here is an overview of your booked gigs
+    </p>
+ 
+@*     <div class="booking-container">
+        <div class="booking-grid-item">
+            <h2 class="booking-grid-heading">
+                Venue
+            </h2>
+        </div>
+        <div class="booking-grid-item">
+            <h2 class="booking-grid-heading">
+                Stage
+            </h2>
+        </div>
+        <div class="booking-grid-item">
+            <h2 class="booking-grid-heading">
+                Date
+            </h2>
+        </div>
+    </div> *@
+</div>
+
+@* @foreach (var booking in Model.Bookings)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => booking.VenueName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => booking.StageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => booking.BookingDate)
+        </td>
+    </tr>
+
+} *@
+
+
+@* @foreach (var item in Model) {
             if (item.ArtistId == id)
             {
         <tr>
@@ -48,12 +121,11 @@
                 @Html.DisplayFor(modelItem => item.ArtistName)
             </td>
             <td>
-                @* <a asp-action="Edit" asp-route-id="@item.ArtistId">Edit</a>  *@|
+
                 <a asp-action="Details" asp-route-id="@item.ArtistId">Details</a> |
-                @* <a asp-action="Delete" asp-route-id="@item.ArtistId">Delete</a> *@
+
             </td>
         </tr>
-            }
-}
-    </tbody>
-</table>
+        }
+} *@
+

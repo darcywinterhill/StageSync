@@ -127,12 +127,12 @@ namespace StageSyncApp.Areas.Identity.Pages.Account
                     if (roles.Contains("Organizers"))
                     {
                         _logger.LogInformation("Organizer logged in.");
-                        return RedirectToAction("Overview", "Bookings");
+                        return RedirectToAction("Index", "Bookings");
                     }
                     else if (roles.Contains("Artists"))
                     {
                         _logger.LogInformation("Artist logged in.");
-                        return RedirectToAction("Details", "Artists");
+                        return RedirectToAction("Index", "Artists");
                     }
                     else
                     {

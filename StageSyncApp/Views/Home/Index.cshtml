@@ -2,10 +2,6 @@
     ViewData["Title"] = "Stage Sync";
 }
 
-@* <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div> *@
 <div class="landing-container">
     <div class="grid-item item-1">
         <h1 class="logo">
@@ -15,20 +11,31 @@
         </h1>
     </div>
     <div class="grid-item item-2">
-       <a class="login-link" asp-area="Identity" asp-page="/Account/Login">
+       <a 
+           class="login-link" 
+           asp-area="Identity" 
+           asp-page="/Account/Login"
+        >
            <div class="login-button">
-                <p class="login-button-text">Log in</p>
+                <p class="login-button-text">
+                    Log in
+                </p>
                 <div class="arrow-circle">
-                    <img src="~/images/arrow-right.png" alt="image by icons8 https://icons8.com/icons/set/arrow-right" />
+                    <img 
+                        src="~/images/arrow-right.png" 
+                        alt="image by icons8 https://icons8.com/icons/set/arrow-right" 
+                    />
                 </div>
            </div>
        </a>
     </div>
     <div class="grid-item item-3">
         <footer>
-        <div class="landing-text-container">
-            <p>Seamlessly connecting venues with top-tier artists for hassle-free bookings</p>
-        </div>
+            <div class="landing-text-container">
+                <p>
+                    Seamlessly connecting venues with top-tier artists for hassle-free bookings
+                </p>
+            </div>
         </footer>
     </div>
 </div>
