@@ -84,11 +84,11 @@ a.header-link {
     margin: 0 5px;
 }
 
-.header-link-button {
+/*.header-link-button {
     margin: 0;
     padding: 0;
     border: none;
-}
+}*/
 
 .info-text {
     color: #f1f2ed;
@@ -107,6 +107,11 @@ a.header-link {
 .alter-link:hover {
     color: #f1f2ed;
     background-color: black;
+    text-decoration: none;
+}
+
+.monthly-section {
+    background-color: #cee084;
     text-decoration: none;
 }
 
@@ -391,6 +396,18 @@ footer {
         font-size: 18px;
     }
 
+    .link-text, .info-text, .log-in-form p, .remember-me-container, .label-text {
+        font-size: 16px;
+    }
+
+    .overview-container {
+        width: 80%;
+        margin: auto;
+    }
+
+    .booking-grid-text {
+        font-size: 14px;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -398,4 +415,11 @@ footer {
         width: 40%;
     }
 
+    .overview-container {
+        width: 50%;
+    }
+    
+    .booking-grid-heading {
+        font-size: 26px;
+    }
 }

@@ -83,7 +83,7 @@
                 </p>
             </div>
 
-            @if (item.VenueName == venueName && item.ArtistId == null)
+            @if (@* item.VenueName == venueName &&  *@item.ArtistId == null)
             {
                 <div class="booking-grid-item unbooked">
                     <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link">

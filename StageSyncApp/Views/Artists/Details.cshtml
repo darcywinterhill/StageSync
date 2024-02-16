@@ -1,7 +1,13 @@
 ﻿@model StageSyncApp.Models.Artist
 
 @{
-    var sortedList = Model.Bookings.OrderBy(item => item.BookingDate);
+
+    var juneList = Model.Bookings.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 6);
+    var julyList = Model.Bookings.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 7);
+
+    bool hasJuneElements = juneList.Any();
+    bool hasJulyElements = julyList.Any();
+
     var loggedInUser = User.Identity.Name;
     int id = 0;
 
@@ -29,17 +35,6 @@
         </h1>
     </div>
     <div class="header-links-container">
-@*         <form class="form-inline"
-              asp-area="Identity"
-              asp-page="/Account/Logout"
-              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit"
-                    class="nav-link btn btn-link header-link-button">
-                <p class="link-text">
-                    Log Out
-                </p>
-            </button>
-        </form> *@
         <a class="header-link" asp-controller="Artists" asp-action="Logout">
             <p class="link-text">
                 Log Out
@@ -69,42 +64,109 @@
         Bookings
     </h1>
     <p class="info-text">
-        Here is an overview of your booked gigs
+        Here you see all your booked gigs
     </p>
-<div class="booking-container">
-    <div class="booking-grid-item">
-        <h2 class="booking-grid-heading">
-            Venue
-        </h2>
-    </div>
-    <div class="booking-grid-item">
-        <h2 class="booking-grid-heading">
-            Stage
-        </h2>
-    </div>
-    <div class="booking-grid-item">
-        <h2 class="booking-grid-heading">
-            Date
-        </h2>
-    </div>
 
-    @foreach (var item in sortedList)
-    {
-        <div class="booking-grid-item">
-            <p class="booking-grid-text">
-                @Html.DisplayFor(modelItem => item.VenueName)
-            </p>
-        </div>
-        <div class="booking-grid-item">
-            <p class="booking-grid-text">
-                @Html.DisplayFor(modelItem => item.StageName)
-            </p>
-        </div>
-        <div class="booking-grid-item">
-            <p class="booking-grid-text">
-                @Html.DisplayFor(modelItem => item.BookingDate)
-            </p>
-        </div>
-    }
-</div>
+    <div class="booked-container">
+        @if (hasJuneElements)
+        {
+            <div class="booked-grid-item month-container">
+                <h2 class="month-heading">
+                    JUNE
+                </h2>
+            </div>
+            <div class="booked-grid-item">
+                @foreach (var item in juneList)
+                {
+                    <div class="booked-wrapper">
+                        <div class="item-wrapper item-title">
+                            <h3>
+                                Date
+                            </h3>
+                        </div>
+                        <div class="item-wrapper">
+                            <p class="booking-grid-text">
+                                @Html.DisplayFor(modelitem => item.BookingDate)
+                            </p>
+                        </div>
+                        <div class="item-wrapper item-title">
+                            <h3>
+                                Venue
+                            </h3>
+                        </div>
+                        <div class="item-wrapper">
+                            <p class="booking-grid-text">
+                                @Html.DisplayFor(modelitem => item.VenueName)
+                            </p>
+                        </div>
+                        <div class="item-wrapper item-title">
+                            <h3>
+                                Stage
+                            </h3>
+                        </div>
+                        <div class="item-wrapper">
+                            <p class="booking-grid-text">
+                                @Html.DisplayFor(modelitem => item.StageName)
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+
+        }
+
+        @if (hasJulyElements)
+        {
+            <div class="booked-grid-item month-container">
+                <h2 class="month-heading">
+                    JULY
+                </h2>
+            </div>
+            <div class="booked-grid-item">
+                @foreach (var item in julyList)
+                {
+                    <div class="booked-wrapper">
+                        <div class="item-wrapper item-title">
+                            <h3>
+                                Date
+                            </h3>
+                        </div>
+                        <div class="item-wrapper">
+                            <p class="booking-grid-text">
+                                @Html.DisplayFor(modelitem => item.BookingDate)
+                            </p>
+                        </div>
+                        <div class="item-wrapper item-title">
+                            <h3>
+                                Venue
+                            </h3>
+                        </div>
+                        <div class="item-wrapper">
+                            <p class="booking-grid-text">
+                                @Html.DisplayFor(modelitem => item.VenueName)
+                            </p>
+                        </div>
+                        <div class="item-wrapper item-title">
+                            <h3>
+                                Stage
+                            </h3>
+                        </div>
+                        <div class="item-wrapper">
+                            <p class="booking-grid-text">
+                                @Html.DisplayFor(modelitem => item.StageName)
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+
+        }
+
+    </div>
 </div>

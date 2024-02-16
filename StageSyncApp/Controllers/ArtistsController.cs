@@ -21,8 +21,8 @@ namespace StageSyncApp.Controllers
 
         {
             var applicationDbContext = _context.Artist.Include(b => b.Bookings);
-            return View(await _context.Artist.ToListAsync());
-        }
+            return View(applicationDbContext.AsQueryable()); // To be able to use the @model in the View
+        }                                                    // I use .AsQueryable instead of .ToListAsync
 
         // GET: Artists/Details/5
         public async Task<IActionResult> Details(int? id)

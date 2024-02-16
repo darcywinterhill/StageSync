@@ -1,4 +1,10 @@
-﻿@model IEnumerable<StageSyncApp.Models.Artist>
+﻿@model IQueryable<StageSyncApp.Models.Artist>
+
+@*
+    The @model prevents artist.Bookings from being null when I loop it
+    Lazy loading?
+*@
+
 
 @{
     var loggedInUser = User.Identity.Name;
@@ -23,6 +29,17 @@
             id = -1;
             break;
     }
+
+    int nrOfBookings = 0;
+
+    @foreach (var artist in Model)
+    {
+        if (artist.Bookings != null)
+        {
+            int artistBookingsCount = artist.Bookings.Where(booking => booking.ArtistId == id).Count();
+            nrOfBookings += artistBookingsCount;
+        }
+    }
 }
 
 <header>
@@ -32,17 +49,6 @@
         </h1>
     </div>
     <div class="header-links-container">
-@*         <form class="form-inline"
-              asp-area="Identity"
-              asp-page="/Account/Logout"
-              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit"
-                    class="nav-link btn btn-link header-link-button">
-                <p class="link-text">
-                    Log Out
-                </p>
-            </button>
-        </form> *@
         <a class="header-link" asp-controller="Artists" asp-action="Logout">
             <p class="link-text">
                 Log Out
@@ -67,12 +73,28 @@
     </div>
 </header>
 
-
 <div class="overview-container">
     <h1 class="booking-title">
         Hi @artistName!
     </h1>
-     <p class="info-text">
-        Here is an overview of your booked gigs
-    </p>
+
+    @if (nrOfBookings == 0)
+    {
+        <p class="info-text">
+            You have @nrOfBookings bookings
+        </p>
+    } 
+    else if (nrOfBookings == 1)
+    {
+        <p class="info-text">
+            You have @nrOfBookings booking - Go to the Bookings page to view it
+        </p>
+    } 
+    else
+    {
+        <p class="info-text">
+            You have @nrOfBookings bookings - Go to the Bookings page to view them
+        </p>
+    }
+
  </div>

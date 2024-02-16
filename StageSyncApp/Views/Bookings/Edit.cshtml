@@ -7,17 +7,11 @@
         </h1>
     </div>
     <div class="header-links-container">
-        <form class="form-inline"
-              asp-area="Identity"
-              asp-page="/Account/Logout"
-              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit"
-                    class="nav-link btn btn-link header-link-button">
-                <p class="link-text">
-                    Log Out
-                </p>
-            </button>
-        </form>
+        <a class="header-link" asp-controller="Bookings" asp-action="Logout">
+            <p class="link-text">
+                Log Out
+            </p>
+        </a>
         <span class="divider">
             /
         </span>
@@ -59,6 +53,7 @@
     <p class="info-text">
         Here you can alter your booking - add, change or cancel artist
     </p>
+
     <div class="form-container">
         <form asp-action="Edit" class="form-wrapper">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -85,10 +80,9 @@
             <div class="submit-form-container">
                 <input type="submit" value="Save" class="submit-form" />
             </div>
-
         </form>
     </div>
-    </div>
+</div>
 
 
 @section Scripts {

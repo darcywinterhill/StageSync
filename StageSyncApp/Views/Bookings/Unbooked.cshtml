@@ -1,5 +1,13 @@
 ﻿@model IEnumerable<StageSyncApp.Models.Booking>
 
+@{
+    var juneList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 6);
+    var julyList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 7);
+
+    bool hasJuneElements = juneList.Any();
+    bool hasJulyElements = julyList.Any();
+}
+
 <header>
     <div class="header-logo-container">
         <h1 class="header-logo">
@@ -48,14 +56,6 @@
         Here you find all your event dates where you haven't booked an artist yet
     </p>
 
-    @{
-        var juneList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 6);
-        var julyList = Model.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 7);
-
-        bool hasJuneElements = juneList.Any();
-        bool hasJulyElements = julyList.Any();
-    }
-
     <div class="booked-container">
         @if(hasJuneElements)
         {
@@ -93,7 +93,7 @@
                             </h3>
                         </div>
                         <div class="item-wrapper">
-                            <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link">
+                            <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link monthly-section">
                                 Book Artist
                             </a>
                         </div>
@@ -141,7 +141,7 @@
                             </h3>
                         </div>
                         <div class="item-wrapper">
-                            <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link">
+                            <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link monthly-section">
                                 Book Artist
                             </a>
                         </div>

@@ -26,17 +26,6 @@
         </h1>
     </div>
     <div class="header-links-container">
-@*         <form class="form-inline"
-              asp-area="Identity"
-              asp-page="/Account/Logout"
-              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit"
-                    class="nav-link btn btn-link header-link-button">
-                <p class="link-text">
-                    Log Out
-                </p>
-            </button>
-        </form> *@
         <a class="header-link"
            asp-controller="Artists"
            asp-action="Logout">
@@ -73,6 +62,7 @@
         You're about to log out from Stage Sync - are you sure about this?
     </p>
     <br />
+
     <div class="submit-form-container">
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button type="submit" class="submit-form">

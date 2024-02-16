@@ -53,100 +53,100 @@
     </p>
 
     <div class="booked-container">
-    <div class="booked-grid-item month-container">
-        <h2 class="month-heading">
-            JUNE
-        </h2>
-    </div>
-    <div class="booked-grid-item">
-    @foreach (var item in juneList) {
-        <div class="booked-wrapper">
-            <div class="item-wrapper item-title">
-                <h3>
-                    Date
-                </h3>
-            </div>
-            <div class="item-wrapper">
-                <p class="booking-grid-text">
-                    @Html.DisplayFor(modelitem => item.BookingDate)
-                </p>
-            </div>
-            <div class="item-wrapper item-title">
-                <h3>
-                    Stage
-                </h3>
-            </div>
-            <div class="item-wrapper">
-                <p class="booking-grid-text">
-                    @Html.DisplayFor(modelitem => item.StageName)
-                </p>
-            </div>
-            <div class="item-wrapper item-title">
-                <h3>
-                    Artist
-                </h3>
-            </div>
-            <div class="item-wrapper">
-                <p class="booking-grid-text">
-                    @Html.DisplayFor(modelitem => item.Artist.ArtistName)
-                </p>
-                @if (item.BookingId <= 5 )
-                {
-                    <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link">
-                        Cancel
-                    </a>
-                }
-            </div>
+        <div class="booked-grid-item month-container">
+            <h2 class="month-heading">
+                JUNE
+            </h2>
         </div>
-    }
-    </div>
-
-    <div class="booked-grid-item month-container">
-        <h2 class="month-heading">
-            JULY
-        </h2>
-    </div>
-    <div class="booked-grid-item">
-    @foreach (var item in julyList) {
-        <div class="booked-wrapper">
-            <div class="item-wrapper item-title">
-                <h3>
-                    Date
-                </h3>
+        <div class="booked-grid-item">
+        @foreach (var item in juneList) {
+            <div class="booked-wrapper">
+                <div class="item-wrapper item-title">
+                    <h3>
+                        Date
+                    </h3>
+                </div>
+                <div class="item-wrapper">
+                    <p class="booking-grid-text">
+                        @Html.DisplayFor(modelitem => item.BookingDate)
+                    </p>
+                </div>
+                <div class="item-wrapper item-title">
+                    <h3>
+                        Stage
+                    </h3>
+                </div>
+                <div class="item-wrapper">
+                    <p class="booking-grid-text">
+                        @Html.DisplayFor(modelitem => item.StageName)
+                    </p>
+                </div>
+                <div class="item-wrapper item-title">
+                    <h3>
+                        Artist
+                    </h3>
+                </div>
+                <div class="item-wrapper">
+                    <p class="booking-grid-text">
+                        @Html.DisplayFor(modelitem => item.Artist.ArtistName)
+                    </p>
+                    @if (item.BookingId <= 5 )
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link monthly-section">
+                            Cancel
+                        </a>
+                    }
+                </div>
             </div>
-            <div class="item-wrapper">
-                <p class="booking-grid-text">
-                    @Html.DisplayFor(modelitem => item.BookingDate)
-                </p>
-            </div>
-            <div class="item-wrapper item-title">
-                <h3>
-                    Stage
-                </h3>
-            </div>
-            <div class="item-wrapper">
-                <p class="booking-grid-text">
-                    @Html.DisplayFor(modelitem => item.StageName)
-                </p>
-            </div>
-            <div class="item-wrapper item-title">
-                <h3>
-                    Artist
-                </h3>
-            </div>
-            <div class="item-wrapper">
-                <p class="booking-grid-text">
-                    @Html.DisplayFor(modelitem => item.Artist.ArtistName)
-                </p>
-                @if (item.BookingId <= 5)
-                {
-                    <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link">
-                        Cancel
-                    </a>
-                }
-            </div>
-        </div>
         }
+        </div>
+
+        <div class="booked-grid-item month-container">
+            <h2 class="month-heading">
+                JULY
+            </h2>
+        </div>
+        <div class="booked-grid-item">
+        @foreach (var item in julyList) {
+            <div class="booked-wrapper">
+                <div class="item-wrapper item-title">
+                    <h3>
+                        Date
+                    </h3>
+                </div>
+                <div class="item-wrapper">
+                    <p class="booking-grid-text">
+                        @Html.DisplayFor(modelitem => item.BookingDate)
+                    </p>
+                </div>
+                <div class="item-wrapper item-title">
+                    <h3>
+                        Stage
+                    </h3>
+                </div>
+                <div class="item-wrapper">
+                    <p class="booking-grid-text">
+                        @Html.DisplayFor(modelitem => item.StageName)
+                    </p>
+                </div>
+                <div class="item-wrapper item-title">
+                    <h3>
+                        Artist
+                    </h3>
+                </div>
+                <div class="item-wrapper">
+                    <p class="booking-grid-text">
+                        @Html.DisplayFor(modelitem => item.Artist.ArtistName)
+                    </p>
+                    @if (item.BookingId <= 5)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.BookingId" class="booking-grid-text alter-link monthly-section">
+                            Cancel
+                        </a>
+                    }
+                </div>
+            </div>
+            }
         </div>
     </div>
 </div>
