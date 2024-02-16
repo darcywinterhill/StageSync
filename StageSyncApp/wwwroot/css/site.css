@@ -4,16 +4,6 @@
     box-sizing: border-box;
 }
 
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
@@ -31,6 +21,8 @@ html {
     box-sizing: border-box;
 }
 
+/* Header and general links */
+
 header {
     padding: 10px 25px;
     margin-bottom: 40px;
@@ -41,11 +33,6 @@ header {
     padding-bottom: 15px;
     margin-bottom: 15px;
 }
-
-/*.back-arrow {
-    width: 25px;
-    height: 25px;
-}*/
 
 .header-logo {
     font-family: 'Gloock', serif;
@@ -83,12 +70,6 @@ a.header-link {
     text-decoration: none;
     margin: 0 5px;
 }
-
-/*.header-link-button {
-    margin: 0;
-    padding: 0;
-    border: none;
-}*/
 
 .info-text {
     color: #f1f2ed;
@@ -181,7 +162,7 @@ a.login-link {
     align-items: flex-end;
 }
 
-footer {
+footer { /* Footer in case if I want to use it for something more later */
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -201,7 +182,7 @@ footer {
     text-transform: uppercase;
 }
 
-/* Log in page */
+/* Login/logout page and general form code */
 
 .login-container {
     display: flex;
@@ -255,7 +236,28 @@ footer {
     text-transform: uppercase;
 }
 
-/* Booking page */
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-wrapper {
+    width: 100%;
+}
+
+.label-text {
+    color: #f1f2ed;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.logout-button:hover, ::selection {
+    outline: none;
+}
+
+/* Most Views */
 
 .overview-container {
     padding-bottom: 25px;
@@ -299,17 +301,6 @@ footer {
 .unbooked {
     background-color: #cee084;
 }
-/*
-.artist-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-}*/
-
-/*.artist-grid-item {
-    padding: 10px;
-}*/
-
-/* Booking page / Booked */
 
 .booked-container {
     display: grid;
@@ -359,30 +350,6 @@ footer {
     margin-bottom: 10px;
 }
 
-/* Edit */
-
-.form-container {
-    display: flex;
-    justify-content: center;
-}
-.form-wrapper {
-    width: 100%;
-}
-
-.label-text {
-    color: #f1f2ed;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    text-transform: uppercase;
-    margin: 0;
-}
-
-/* Logout */
-
-.logout-button:hover, ::selection {
-    outline: none;
-}
-
 @media screen and (min-width: 768px) {
     .header-logo {
         font-size: 74px;
@@ -396,7 +363,7 @@ footer {
         font-size: 18px;
     }
 
-    .link-text, .info-text, .log-in-form p, .remember-me-container, .label-text {
+    .link-text, .divider, .info-text, .log-in-form p, .remember-me-container, .label-text {
         font-size: 16px;
     }
 
