@@ -15,11 +15,18 @@ Final project during System developer .NET studies @ Lexicon. Using ASP.NET Core
 * Because of the scope there are some things that are hard coded
 
 ### Content
-* Logged in venue has these pages: Overview, Bookings, Unbooked, Log Out
+* Logged in venue has these pages:
+  - Overview
+  - Bookings - divided by month
+  - Unbooked - divided by month
+  - Log Out
 * If a venue has booked an artist to one of the five unbooked dates, a cancel/alter button is visible for that booking in the relevant views
-* Logged in artist has these pages: Start, Bookings, Log Out
+* Logged in artist has these pages:
+  - Start - with nr of bookings
+  - Bookings - divided by month
+  - Log Out
 
 ## Wiggle Room
-* It's possible to use the rest of the actions in the Artists-/BookingsController
+* It's possible to change code and use the rest of the actions in the Artists-/BookingsController
 * Switch hard coded parts to fit other users than the ones created for the scope
 * Deploy project
