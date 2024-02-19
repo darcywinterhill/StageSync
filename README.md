@@ -19,7 +19,7 @@ Final project during System developer .NET studies @ Lexicon. Using ASP.NET Core
 * If a venue has booked an artist to one of the five unbooked dates, a cancel/alter button is visible for that booking in the relevant views
 * Logged in artist has these pages: Start, Bookings, Log Out
 
-## Things that can be altered
+## Wiggle Room
 * It's possible to use the rest of the actions in the Artists-/BookingsController
 * Switch hard coded parts to fit other users than the ones created for the scope
 * Deploy project
