@@ -5,7 +5,7 @@ Final project during System developer .NET studies @ Lexicon. Using ASP.NET Core
 * NOTE that the database setup for the scope is made using SQL Server to local database and will NOT be recreated if cloning and updating the project
 
 ## Project Description
-* A web app where venues can book artists and artists can view their bookings
+* A responsive web app where venues can book artists and artists can view their bookings
 * Login for both organizer/venue and artists and authentication to show the different pages
 
 ### Scope
