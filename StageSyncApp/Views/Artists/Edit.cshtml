@@ -2,6 +2,7 @@
 
 @* This View is not used *@
 
+
 @{
     var loggedInUser = User.Identity.Name;
     int id = 0;
@@ -46,7 +47,7 @@
         <span class="divider">
             /
         </span>
-        <a class="header-link" href="@Url.Action("Details", "Artists", new { id = id })">
+         <a class="header-link" href="@Url.Action("Details", "Artists", new { id = id })">
             <p class="link-text underlined">
                 Bookings
             </p>

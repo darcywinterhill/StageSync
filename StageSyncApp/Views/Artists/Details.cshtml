@@ -1,7 +1,6 @@
 ﻿@model StageSyncApp.Models.Artist
 
 @{
-
     var juneList = Model.Bookings.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 6);
     var julyList = Model.Bookings.OrderBy(item => item.BookingDate).Where(item => item.BookingDate.Month == 7);
 
@@ -113,10 +112,6 @@
                 }
             </div>
         }
-        else
-        {
-
-        }
 
         @if (hasJulyElements)
         {
@@ -162,10 +157,6 @@
                     </div>
                 }
             </div>
-        }
-        else
-        {
-
         }
 
     </div>

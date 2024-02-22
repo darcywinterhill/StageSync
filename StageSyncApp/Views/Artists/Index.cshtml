@@ -2,9 +2,8 @@
 
 @*
     The @model prevents artist.Bookings from being null when I loop it
-    Lazy loading?
+    Lazy loading? Async not rendering all the Bookings data instantly?
 *@
-
 
 @{
     var loggedInUser = User.Identity.Name;
@@ -29,6 +28,8 @@
             id = -1;
             break;
     }
+
+    // Number of bookings
 
     int nrOfBookings = 0;
 
