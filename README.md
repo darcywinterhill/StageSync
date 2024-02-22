@@ -2,7 +2,7 @@
 Final project during System developer .NET studies @ Lexicon. Using ASP.NET Core MVC and Identity.
 * NOTE that this project is NOT deployed and cannot be viewed live
 * For images of the project - please view this folder: StageSyncApp/wwwroot/images/printscreens
-* NOTE that the database setup for the scope is made using SQL Server to local database and will NOT be recreated if cloning and updating the project
+* NOTE that the database setup for the scope, with already existing bookings etc, is made using SQL Server to local database and will NOT be recreated if cloning and updating the project
 
 ## Project Description
 * A responsive web app where venues can book artists and artists can view their bookings
